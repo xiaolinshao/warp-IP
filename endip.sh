@@ -205,13 +205,13 @@ echo "脚本支持WARP优选IP、WARP配置文件生成，感谢CF网友开发"
 echo "------------------------------------------------------"
 echo
 echo "1.WARP-V4V6优选对端IP"
-echo "2.WARP-V4V6优选对端IP"
+echo "2.注册生成WARP-Wireguard配置文件、二维码"
 echo "0.退出"
 read -p "请选择: " menu
 if [ "$menu" == "1" ];then
 warpendipv4v6
-if [ "$menu" == "2" ];then
-warpendipv4v6
+elif [ "$menu" == "2" ];then
+cfwarpreg
 else 
 exit
 fi
