@@ -196,11 +196,6 @@ cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq
 rm -rf ip.txt
 exit
 }
-
-echo "------------------------------------------------------"
-echo "武哥"
-echo "武哥"
-echo "武哥"
 echo "脚本支持WARP优选IP、WARP配置文件生成，感谢CF网友开发"
 echo "------------------------------------------------------"
 echo
