@@ -196,18 +196,37 @@ cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq
 rm -rf ip.txt
 exit
 }
+echo "🆘广告"
+echo "-----"
+echo ""
+echo "GitHub服务器，影视接口"
+echo "----------------------"
+echo ""
+echo "成人👇"
+echo "--------"
+echo "https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/linshao/main/18.json"
 echo "------------------------------------------------------"
+echo "常规👇"
+echo "-------"
+echo ""
+echo "https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/linshao/main/1.json"
 echo "------------------------------------------------------"
+echo ""
+echo "手戳👇warp+26字母节点"
+echo "----------------------"
+echo "https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/linshao/main/26字母.yaml"
 echo "------------------------------------------------------"
-echo "------------------------------------------------------"
+echo ""
 echo "脚本支持WARP优选IP、WARP配置文件生成，感谢CF网友开发"
 echo "------------------------------------------------------"
-echo "------------------------------------------------------"
+echo ""
 echo "武-哥---偷来的IP优选"
-echo "------------------------------------------------------"
-echo
+echo "-------------------"
+echo ""
 echo "1.WARP-V4V6优选对端IP"
+echo "----------------------"
 echo "0.退出"
+echo "------"
 read -p "请选择: " menu
 if [ "$menu" == "1" ];then
 warpendipv4v6
