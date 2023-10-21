@@ -322,7 +322,7 @@ else
 	done
 fi
 echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u>/root/warpip/ip.txt
-wget -qO /root/warpip/$cpu https://gitlab.com/rwkgyg/CFwarp/raw/main/point/$cpu && chmod +x /root/warpip/$cpu
+wget -qO /root/warpip/$cpu https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/$cpu && chmod +x /root/warpip/$cpu
 cd /root/warpip
 ./$cpu >/dev/null 2>&1 &
 wait
