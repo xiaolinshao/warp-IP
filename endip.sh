@@ -210,7 +210,7 @@ echo "0.退出"
 read -p "请选择: " menu
 if [ "$menu" == "1" ];then
 warpendipv4v6
-elif [ "$menu" == "2" ];then
+if [ "$menu" == "2" ];then
 warpendipv4v6
 else 
 exit
