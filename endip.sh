@@ -19,8 +19,8 @@ case "$(uname -m)" in
 	;;
 esac
 
-cfwarpreg()
-{curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/endip.sh -o endip.sh && chmod +x endip.sh && ./endip.sh -o acwarp.sh && chmod +x acwarp.sh && ./acwarp.sh
+cfwarpreg(){
+curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/endip.sh -o endip.sh && chmod +x endip.sh && ./endip.sh -o acwarp.sh && chmod +x acwarp.sh && ./acwarp.sh
 }
 
 warpendipv4v6(){
@@ -198,9 +198,9 @@ exit
 }
 
 echo "------------------------------------------------------"
-echo "甬哥Github项目  ：github.com/yonggekkk"
-echo "甬哥blogger博客 ：ygkkk.blogspot.com"
-echo "甬哥YouTube频道 ：www.youtube.com/@ygkkk"
+echo "武哥"
+echo "武哥"
+echo "武哥"
 echo "脚本支持WARP优选IP、WARP配置文件生成，感谢CF网友开发"
 echo "------------------------------------------------------"
 echo
