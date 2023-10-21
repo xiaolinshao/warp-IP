@@ -176,11 +176,11 @@ if [[ ! -f '/root/warpip/result.csv' ]]; then
 cpujg
 v4v6
 if [[ -z $v4 ]]; then
-wget -qO /root/warpip/ip.txt https://gitlab.com/rwkgyg/CFwarp/raw/main/point/ip6.txt
+wget -qO /root/warpip/ip.txt https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/ip6.txt
 else
-wget -qO /root/warpip/ip.txt https://gitlab.com/rwkgyg/CFwarp/raw/main/point/ip.txt
+wget -qO /root/warpip/ip.txt https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/ip.txt
 fi
-wget -qO /root/warpip/$cpu https://gitlab.com/rwkgyg/CFwarp/raw/main/point/cpu/$cpu && chmod +x /root/warpip/$cpu
+wget -qO /root/warpip/$cpu https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/cpu/$cpu && chmod +x /root/warpip/$cpu
 cd /root/warpip
 ./$cpu >/dev/null 2>&1 &
 wait
@@ -325,7 +325,7 @@ else
 	done
 fi
 echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u>/root/warpip/ip.txt
-wget -qO /root/warpip/$cpu https://gitlab.com/rwkgyg/CFwarp/raw/main/point/$cpu && chmod +x /root/warpip/$cpu
+wget -qO /root/warpip/$cpu https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/$cpu && chmod +x /root/warpip/$cpu
 cd /root/warpip
 ./$cpu >/dev/null 2>&1 &
 wait
