@@ -503,10 +503,10 @@ apt update -y;apt install iproute2 openresolv dnsutils iptables -y;apt install w
 elif [[ $release = Ubuntu ]]; then
 apt update -y;apt install iproute2 openresolv dnsutils iptables -y;apt install wireguard-tools --no-install-recommends -y			
 fi
-[[ $cpu = AMD64 ]] && wget -N https://gitlab.com/rwkgyg/cfwarp/raw/main/wgcf_2.2.15_amd64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf         
-[[ $cpu = ARM64 ]] && wget -N https://gitlab.com/rwkgyg/cfwarp/raw/main/wgcf_2.2.15_arm64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf
+[[ $cpu = AMD64 ]] && wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wgcf_2.2.15_amd64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf         
+[[ $cpu = ARM64 ]] && wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wgcf_2.2.15_arm64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf
 if [[ $main -lt 5 || $minor -lt 6 ]] || [[ $vi =~ lxc|openvz ]]; then
-[[ -e /usr/bin/wireguard-go ]] || wget -N https://gitlab.com/rwkgyg/cfwarp/raw/main/wireguard-go -O /usr/bin/wireguard-go && chmod +x /usr/bin/wireguard-go
+[[ -e /usr/bin/wireguard-go ]] || wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wireguard-go -O /usr/bin/wireguard-go && chmod +x /usr/bin/wireguard-go
 fi
 echo | wgcf register
 until [[ -e wgcf-account.toml ]]
@@ -689,7 +689,7 @@ sed -i "27 s/input/'$ID'/" wp-plus.py
 readp "设置screen窗口名称，回车默认名称为'wp'：" wpp
 [[ -z $wpp ]] && wpp='wp'
 screen -UdmS $wpp bash -c '/usr/bin/python3 /root/wp-plus.py' && back;;
-5 ) wget -N https://gitlab.com/rwkgyg/screen-script/raw/main/screen.sh && bash screen.sh && back;;
+5 ) wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/screen.sh && bash screen.sh && back;;
 0 ) bash CFwarp.sh
 esac
 }
@@ -748,7 +748,7 @@ case "$cd" in
 1 )
 [[ -e /root/WARP-CR.sh || -e /root/WARP-CP.sh ]] && yellow "经检测，你正在使用其他刷IP功能，请关闭它后再执行" && REnfwarp
 screen -d >/dev/null 2>&1
-wget -N --no-check-certificate https://gitlab.com/rwkgyg/cfwarp/raw/main/check.sh
+wget -N --no-check-certificate https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/check.sh
 readp "输入国家区域简称（例：新加坡，输入大写SG;美国，输入大写US）:" gj
 [[ -n $gj ]] && sed -i "s/dd/$gj/g" check.sh || (sed -i "s/dd/\$region/g" check.sh && green "当前设置WARP默认随机分配的国家区域: $g4 ")
 readp "已是奈飞IP或者指定IP区域时，重新检测间隔时间（回车默认45秒）,请输入间隔时间（例：50秒，输入50）:" stop
@@ -763,7 +763,7 @@ back;;
 2 )
 [[ -e /root/WARP-CP.sh || -e /root/check.sh ]] && yellow "经检测，你正在使用其他刷IP功能，请关闭它后再执行" && REnfwarp
 screen -d >/dev/null 2>&1
-wget -N --no-check-certificate https://gitlab.com/rwkgyg/cfwarp/raw/main/WARP-CR.sh
+wget -N --no-check-certificate https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/WARP-CR.sh
 readp "输入国家区域简称（例：新加坡，输入大写SG;美国，输入大写US）:" gj
 [[ -n $gj ]] && sed -i "s/dd4/$gj/g" WARP-CR.sh || (sed -i "s/dd4/\$eg4/g" WARP-CR.sh && green "IPV4当前设置WARP默认分配的国家区域: $g4 ")
 [[ -n $gj ]] && sed -i "s/dd6/$gj/g" WARP-CR.sh || (sed -i "s/dd6/\$eg6/g" WARP-CR.sh && green "IPV6当前设置WARP默认分配的国家区域: $g6 ")
@@ -782,7 +782,7 @@ back;;
 wgcfv4=$(curl -s4m6 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2) 
 [[ ! $wgcfv4 =~ on|plus ]] && yellow "当前Wgcf-IPV4未开启" && bash CFwarp.sh
 screen -d >/dev/null 2>&1
-wget -N --no-check-certificate https://gitlab.com/rwkgyg/cfwarp/raw/main/WARP-CP.sh
+wget -N --no-check-certificate https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/WARP-CP.sh
 readp "输入WARP-IPV4的第二段.第三段的IP段（例：8.45.46.123 ， 输入 45.46 ）:" gj
 [[ -n $gj ]] && sed -i "s/ipd/$gj/g" WARP-CP.sh || (sed -i "s/ipd/\$v4d/g" WARP-CP.sh && green "未输入，使用当前WARP默认IP段$(curl -s4m3 https://ip.gs -k | awk -F '.' '{print $2"."$3}')")
 readp "已刷到设置的IP段时，重新检测间隔时间（回车默认60秒）,请输入间隔时间（例：50秒，输入50）:" stop
@@ -808,7 +808,7 @@ readp "$ab" cd
 case "$cd" in
 1 ) ReIP;;
 2 ) Rewarp;;
-3 ) wget -N https://gitlab.com/rwkgyg/screen-script/raw/main/screen.sh && bash screen.sh && back;;
+3 ) wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/screen.sh && bash screen.sh && back;;
 0 ) bash CFwarp.sh
 esac
 }
