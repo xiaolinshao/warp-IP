@@ -503,8 +503,8 @@ apt update -y;apt install iproute2 openresolv dnsutils iptables -y;apt install w
 elif [[ $release = Ubuntu ]]; then
 apt update -y;apt install iproute2 openresolv dnsutils iptables -y;apt install wireguard-tools --no-install-recommends -y			
 fi
-[[ $cpu = AMD64 ]] && wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wgcf_2.2.15_amd64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf         
-[[ $cpu = ARM64 ]] && wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wgcf_2.2.15_arm64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf
+[[ $cpu = AMD64 ]] && wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wgcf_2.2.18_amd64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf         
+[[ $cpu = ARM64 ]] && wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wgcf_2.2.18_arm64 -O /usr/local/bin/wgcf && chmod +x /usr/local/bin/wgcf
 if [[ $main -lt 5 || $minor -lt 6 ]] || [[ $vi =~ lxc|openvz ]]; then
 [[ -e /usr/bin/wireguard-go ]] || wget -N https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/wireguard-go -O /usr/bin/wireguard-go && chmod +x /usr/bin/wireguard-go
 fi
