@@ -4,7 +4,7 @@ import os
 import time
 import requests
 
-ppkeys = requests.get('https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/24pb')
+ppkeys = requests.get('https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/24pb')
 pkeys = ppkeys.content.decode('UTF8')
 keys = pkeys.split(',')
 gkeys = []
