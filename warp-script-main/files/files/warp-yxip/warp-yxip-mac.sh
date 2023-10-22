@@ -198,8 +198,8 @@ endpoint6(){
 menu(){
     clear
     echo "#############################################################"
-    echo -e "#           ${RED}WARP Endpoint IP 一键优选脚本 for Mac${PLAIN}           #"
-    echo -e "# ${GREEN}作者${PLAIN}: MisakaNo の 小破站                                  #"
+    echo -e "#           ${RED}㊗️武哥偷的🈲WARP Endpoint IP 一键优选脚本 for Mac${PLAIN}           #"
+    echo -e "# ${GREEN}作者${PLAIN}: MisakaNo の 小破站(😀😀😀😀😀😀😀😀😀😀😀😀武哥偷小破站的优选IP😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀👇)                                  #"
     echo -e "# ${GREEN}博客${PLAIN}: https://blog.misaka.rest                            #"
     echo -e "# ${GREEN}GitHub 项目${PLAIN}: https://github.com/Misaka-blog               #"
     echo -e "# ${GREEN}GitLab 项目${PLAIN}: https://gitlab.com/Misaka-blog               #"
