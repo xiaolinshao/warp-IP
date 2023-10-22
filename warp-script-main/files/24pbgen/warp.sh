@@ -680,14 +680,14 @@ install_wgcf() {
     fi
     if [[ $SYSTEM == "Debian" ]]; then
         ${PACKAGE_UPDATE[int]}
-        ${PACKAGE_INSTALL[int]} sudo wget curl unzip lsb-release bc htop screen python3 inetutils-ping qrencode
+        ${PACKAGE_INSTALL[int]} sudo wget curl unzip lsb-release bc htop screen python3 iputils-ping qrencode
         echo "deb http://deb.debian.org/debian $(lsb_release -sc)-backports main" | tee /etc/apt/sources.list.d/backports.list
         ${PACKAGE_UPDATE[int]}
         ${PACKAGE_INSTALL[int]} --no-install-recommends net-tools iproute2 openresolv dnsutils wireguard-tools iptables
     fi
     if [[ $SYSTEM == "Ubuntu" ]]; then
         ${PACKAGE_UPDATE[int]}
-        ${PACKAGE_INSTALL[int]} sudo curl wget unzip lsb-release bc htop screen python3 inetutils-ping qrencode
+        ${PACKAGE_INSTALL[int]} sudo curl wget unzip lsb-release bc htop screen python3 iputils-ping qrencode
         ${PACKAGE_INSTALL[int]} --no-install-recommends net-tools iproute2 openresolv dnsutils wireguard-tools iptables
     fi
 
@@ -1054,7 +1054,7 @@ install_wpgo() {
         ${PACKAGE_INSTALL[int]} sudo curl wget bash grep bc htop iputils screen python3 qrencode
     else
         ${PACKAGE_UPDATE[int]}
-        ${PACKAGE_INSTALL[int]} sudo curl wget bc htop inetutils-ping screen python3 qrencode
+        ${PACKAGE_INSTALL[int]} sudo curl wget bc htop iputils-ping screen python3 qrencode
     fi
 
     # IPv4 only VPS 开启 IPv6 支持
@@ -1192,7 +1192,7 @@ install_warp_cli() {
     fi
     if [[ $SYSTEM == "Debian" ]]; then
         ${PACKAGE_UPDATE[int]}
-        ${PACKAGE_INSTALL[int]} sudo curl wget lsb-release bc htop inetutils-ping screen python3 qrencode
+        ${PACKAGE_INSTALL[int]} sudo curl wget lsb-release bc htop iputils-ping screen python3 qrencode
         [[ -z $(type -P gpg 2>/dev/null) ]] && ${PACKAGE_INSTALL[int]} gnupg
         [[ -z $(apt list 2>/dev/null | grep apt-transport-https | grep installed) ]] && ${PACKAGE_INSTALL[int]} apt-transport-https
         curl https://pkg.cloudflareclient.com/pubkey.gpg | apt-key add -
@@ -1202,7 +1202,7 @@ install_warp_cli() {
     fi
     if [[ $SYSTEM == "Ubuntu" ]]; then
         ${PACKAGE_UPDATE[int]}
-        ${PACKAGE_INSTALL[int]} sudo curl wget lsb-release bc htop inetutils-ping screen python3 qrencode
+        ${PACKAGE_INSTALL[int]} sudo curl wget lsb-release bc htop iputils-ping screen python3 qrencode
         curl https://pkg.cloudflareclient.com/pubkey.gpg | apt-key add -
         echo "deb http://pkg.cloudflareclient.com/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/cloudflare-client.list
         ${PACKAGE_UPDATE[int]}
@@ -1296,7 +1296,7 @@ install_wireproxy() {
         ${PACKAGE_INSTALL[int]} sudo curl wget bash grep bc htop iputils screen python3 qrencode wireguard-tools
     else
         ${PACKAGE_UPDATE[int]}
-        ${PACKAGE_INSTALL[int]} sudo curl wget bc htop inetutils-ping screen python3 qrencode wireguard-tools
+        ${PACKAGE_INSTALL[int]} sudo curl wget bc htop iputils-ping screen python3 qrencode wireguard-tools
     fi
 
     # 下载 WireProxy
