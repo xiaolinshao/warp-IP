@@ -1,4 +1,4 @@
-#!/bin/sh
+11:17 2023/10/22#!/bin/sh
 
 red(){
     echo -e "\033[31m\033[01m$1\033[0m"
@@ -78,7 +78,6 @@ elif [[ $account_type == 3 ]]; then
     if [[ -n $teams_token ]]; then
       # 生成 WireGuard 公私钥及 WARP 设备 ID 和 FCM Token
       private_key=$(wg genkey)
-      public_key=$(wg pubkey <<< "$private_key")
       install_id=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 22)
       fcm_token="${install_id}:APA91b$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 134)"
 
