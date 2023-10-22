@@ -13,7 +13,7 @@ yellow(){
 }
 
 rm -f wgcf-account.toml wgcf-profile.conf
-echo | ./wgcf register
+echo | ./acwarp register
 chmod +x wgcf-account.toml
 
 clear
