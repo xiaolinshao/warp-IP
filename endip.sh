@@ -20,7 +20,7 @@ case "$(uname -m)" in
 esac
 
 cfwarpreg(){
-curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/endip.sh -o endip.sh && chmod +x endip.sh && ./endip.sh -o acwarp.sh && chmod +x acwarp.sh && ./acwarp.sh
+curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/acwarp.sh -o acwarp.sh && chmod +x acwarp.sh && ./acwarp.sh
 }
 
 warpendipv4v6(){
