@@ -40,7 +40,7 @@ cfwarpIP(){
 if [[ ! -f "warpendpoint" ]]; then
 echo "下载warp优选程序"
 if [[ -n $cpu ]]; then
-curl -L -o warpendpoint -# --retry 2 https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp.exe
+curl -L -o warpendpoint -# --retry 2 https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp
 fi
 fi
 }
