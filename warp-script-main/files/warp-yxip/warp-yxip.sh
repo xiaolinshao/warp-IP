@@ -198,25 +198,25 @@ endpoint6(){
 
 menu(){
     clear
-    echo  "         #############################################################"
+    echo  "      #############################################################"
     echo ""
-    echo -e "       #       ${RED}WARP Endpoint IP 一键优选脚本${PLAIN}           #"
+    echo -e "               ${RED}WARP Endpoint IP 一键优选脚本${PLAIN}           
     echo ""
-    echo -e "       # ${GREEN}作者${PLAIN}: 武哥偷来的优选IP                       #"
+    echo -e "        1 ${GREEN}作者${PLAIN}: 武哥偷来的优选IP                       
+    echo "
+    echo -e "       2 ${GREEN}博客${PLAIN}: 武哥没有                              
+    echo "
+    echo -e "        3 ${GREEN}GitHub 项目${PLAIN}: @github.com/xiaolinshao       
     echo ""
-    echo -e "       # ${GREEN}博客${PLAIN}: 武哥没有                              #"
+    echo -e "        4 ${GREEN}GitLab 项目${PLAIN}: 武哥没有                       
     echo ""
-    echo -e "       # ${GREEN}GitHub 项目${PLAIN}: @github.com/xiaolinshao       #"
+    echo -e "        5 ${GREEN}Telegram 频道${PLAIN}: https://t.me/broqun         
     echo ""
-    echo -e "       # ${GREEN}GitLab 项目${PLAIN}: 武哥没有                       #"
+    echo -e "        6 ${GREEN}Telegram 群组${PLAIN}: @joinchat/UvfrsjHJOrcA8jCG  
     echo ""
-    echo -e "       # ${GREEN}Telegram 频道${PLAIN}: https://t.me/broqun         #"
+    echo -e "        7 ${GREEN}YouTube 频道${PLAIN}: 武哥没有                      
     echo ""
-    echo -e "       # ${GREEN}Telegram 群组${PLAIN}: @joinchat/UvfrsjHJOrcA8jCG  #"
-    echo ""
-    echo -e "       # ${GREEN}YouTube 频道${PLAIN}: 武哥没有                      #"
-    echo ""
-    echo "          #############################################################"
+    echo "      #############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} WARP IPv4 Endpoint IP 优选 ${YELLOW}(默认)${PLAIN}"
      echo ""
