@@ -1,224 +1,244 @@
 #!/bin/bash
 
-RED="\033[31m"
-GREEN="\033[32m"
-YELLOW="\033[33m"
-PLAIN='\033[0m'
+case "$(uname -m)" in
+	x86_64 | x64 | amd64 )
+	    cpu=amd64
+	;;
+	i386 | i686 )
+        cpu=386
+	;;
+	armv8 | armv8l | arm64 | aarch64 )
+        cpu=arm64
+	;;
+	armv7l )
+        cpu=arm
+	;;
+	* )
+	echo "当前架构为$(uname -m)，暂不支持"
+	exit
+	;;
+esac
 
-red() {
-    echo -e "\033[31m\033[01m$1\033[0m"
+cfwarpreg(){
+curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/acwarp.sh -o acwarp.sh && chmod +x acwarp.sh && ./acwarp.sh
 }
 
-green() {
-    echo -e "\033[32m\033[01m$1\033[0m"
+warpendipv4v6(){
+echo "1.IPV4优选对端IP"
+echo "2.IPV6优选对端IP"
+echo "0.退出"
+read -p "请选择: " menu
+if [ "$menu" == "1" ];then
+cfwarpIP && endipv4 && endipresult
+elif [ "$menu" == "2" ];then
+cfwarpIP && endipv6 && endipresult
+else 
+exit
+fi
 }
 
-yellow() {
-    echo -e "\033[33m\033[01m$1\033[0m"
+cfwarpIP(){
+
+if [[ ! -f "warpendpoint" ]]; then
+echo "下载warp优选程序"
+if [[ -n $cpu ]]; then
+curl -L -o warpendpoint -# --retry 2 https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warpendpoint
+fi
+fi
 }
 
-for i in "${CMD[@]}"; do
-    SYS="$i" && [[ -n $SYS ]] && break
-done
-
-for ((int = 0; int < ${#REGEX[@]}; int++)); do
-    if [[ $(echo "$SYS" | tr '[:upper:]' '[:lower:]') =~ ${REGEX[int]} ]]; then
-        SYSTEM="${RELEASE[int]}" && [[ -n $SYSTEM ]] && break
-    fi
-done
-
-archAffix(){
-    case "$(uname -m)" in
-        x86_64 | amd64 ) echo 'amd64' ;;
-        armv8 | arm64 | aarch64 ) echo 'arm64' ;;
-        * ) red "不支持的CPU架构!" && exit 1 ;;
-    esac
+endipv4(){
+	n=0
+	iplist=100
+	while true
+	do
+		temp[$n]=$(echo 162.159.192.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo 162.159.193.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo 162.159.195.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo 188.114.96.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo 188.114.97.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo 188.114.98.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo 188.114.99.$(($RANDOM%256)))
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+	done
+	while true
+	do
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 162.159.192.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 162.159.193.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 162.159.195.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 188.114.96.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 188.114.97.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 188.114.98.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo 188.114.99.$(($RANDOM%256)))
+			n=$[$n+1]
+		fi
+	done
 }
 
-warpendpoint(){
-    # 下载优选工具软件，感谢某匿名网友的分享的优选工具
-    wget https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warpendpoint
-    
-    # 启动 WARP Endpoint IP 优选工具
-    chmod +x warp && ./warp >/dev/null 2>&1
-    
-    # 显示前十个优选 Endpoint IP 及使用方法
-    green "当前最优 Endpoint IP 结果如下，并已保存至 result.csv中："
-    cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq | head -11 | awk -F, '{print "端点 "$1" 丢包率 "$2" 平均延迟 "$3}'
-    echo ""
-    yellow "使用方法如下："
-    yellow "1. 将 WireGuard 节点的默认的 Endpoint IP：engage.cloudflareclient.com:2408 替换成本地网络最优的 Endpoint IP"
-
-    # 删除 WARP Endpoint IP 优选工具及其附属文件
-    # rm -f warp ip.txt
+endipv6(){
+	n=0
+	iplist=100
+	while true
+	do
+		temp[$n]=$(echo [2606:4700:d0::$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2)))])
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+		temp[$n]=$(echo [2606:4700:d1::$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2)))])
+		n=$[$n+1]
+		if [ $n -ge $iplist ]
+		then
+			break
+		fi
+	done
+	while true
+	do
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo [2606:4700:d0::$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2)))])
+			n=$[$n+1]
+		fi
+		if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]
+		then
+			break
+		else
+			temp[$n]=$(echo [2606:4700:d1::$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2))):$(printf '%x\n' $(($RANDOM*2+$RANDOM%2)))])
+			n=$[$n+1]
+		fi
+	done
 }
 
-endpoint4(){
-    # 生成优选 WARP IPv4 Endpoint IP 段列表
-    n=0
-    iplist=100
-    while true; do
-        temp[$n]=$(echo 162.159.192.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 162.159.193.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 162.159.195.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 162.159.204.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 188.114.96.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 188.114.97.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 188.114.98.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo 188.114.99.$(($RANDOM % 256)))
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-    done
-    while true; do
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 162.159.192.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 162.159.193.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 162.159.195.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 162.159.204.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 188.114.96.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 188.114.97.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 188.114.98.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo 188.114.99.$(($RANDOM % 256)))
-            n=$(($n + 1))
-        fi
-    done
-
-    # 将生成的 IP 段列表放到 ip.txt 里，待程序优选
-    echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
-
-    # 启动优选程序
-    warpendpoint
+endipresult(){
+echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
+ulimit -n 102400
+chmod +x warpendpoint
+./warpendpoint
+clear
+cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq | head -11 | awk -F, '{print "端点 "$1" 丢包率 "$2" 平均延迟 "$3}' 
+rm -rf ip.txt
+exit
 }
-
-endpoint6(){
-    # 生成优选 WARP IPv6 Endpoint IP 段列表
-    n=0
-    iplist=100
-    while true; do
-        temp[$n]=$(echo [2606:4700:d0::$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2)))])
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-        temp[$n]=$(echo [2606:4700:d1::$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2)))])
-        n=$(($n + 1))
-        if [ $n -ge $iplist ]; then
-            break
-        fi
-    done
-    while true; do
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo [2606:4700:d0::$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2)))])
-            n=$(($n + 1))
-        fi
-        if [ $(echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u | wc -l) -ge $iplist ]; then
-            break
-        else
-            temp[$n]=$(echo [2606:4700:d1::$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2))):$(printf '%x\n' $(($RANDOM * 2 + $RANDOM % 2)))])
-            n=$(($n + 1))
-        fi
-    done
-
-    # 将生成的 IP 段列表放到 ip.txt 里，待程序优选
-    echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
-
-    # 启动优选程序
-    warpendpoint
-}
-
-menu(){
-    clear
-    echo "#############################################################"
-    echo -e "#           ${RED}㊗️武哥偷的🈲WARP Endpoint IP 一键优选脚本 for Mac${PLAIN}           #"
-    echo -e "# ${GREEN}作者${PLAIN}: MisakaNo の 小破站(😀😀😀😀😀😀😀😀😀😀😀😀武哥偷小破站的优选IP😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀👇)                                  #"
-    echo -e "# ${GREEN}博客${PLAIN}: https://blog.misaka.rest                            #"
-    echo -e "# ${GREEN}GitHub 项目${PLAIN}: https://github.com/Misaka-blog               #"
-    echo -e "# ${GREEN}GitLab 项目${PLAIN}: https://gitlab.com/Misaka-blog               #"
-    echo -e "# ${GREEN}Telegram 频道${PLAIN}: https://t.me/misakanocchannel              #"
-    echo -e "# ${GREEN}Telegram 群组${PLAIN}: https://t.me/misakanoc                     #"
-    echo -e "# ${GREEN}YouTube 频道${PLAIN}: https://www.youtube.com/@misaka-blog        #"
-    echo "#############################################################"
-    echo ""
-    echo -e " ${GREEN}1.${PLAIN} WARP IPv4 Endpoint IP 优选 ${YELLOW}(默认)${PLAIN}"
-    echo -e " ${GREEN}2.${PLAIN} WARP IPv6 Endpoint IP 优选"
-    echo " -------------"
-    echo -e " ${GREEN}0.${PLAIN} 退出脚本"
-    echo ""
-    read -rp "请输入选项 [0-2]: " menuInput
-    case $menuInput in
-        2 ) endpoint6 ;;
-        0 ) exit 1 ;;
-        * ) endpoint4 ;;
-    esac
-}
-
-menu
+echo "------------------------------------------------------"
+echo "------------------------------------------------------"
+echo "------------------------------------------------------"
+echo "------------------------------------------------------"
+echo "------------------------------------------------------"
+echo "🆘广告"
+echo "-----"
+echo ""
+echo "GitHub服务器，影视接口"
+echo "----------------------"
+echo ""
+echo "成人👇"
+echo "--------"
+echo "https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/linshao/main/18.json"
+echo "------------------------------------------------------"
+echo "常规👇"
+echo "-------"
+echo ""
+echo "https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/linshao/main/1.json"
+echo "------------------------------------------------------"
+echo ""
+echo "手戳👇warp+26字母节点"
+echo "----------------------"
+echo "https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/linshao/main/26字母.yaml"
+echo "------------------------------------------------------"
+echo ""
+echo "脚本支持WARP优选IP、WARP配置文件生成，感谢CF网友开发"
+echo "------------------------------------------------------"
+echo ""
+echo "武-哥---偷来的IP优选"
+echo "---------------------"
+echo ""
+echo "1.WARP-V4V6优选对端IP"
+echo "---------------------"
+echo "2.注册生成WARP-Wireguard配置文件、二维码"
+echo "---------------------------------------"
+echo "0.退出"
+echo "-------"
+read -p "请选择: " menu
+if [ "$menu" == "1" ];then
+warpendipv4v6
+elif [ "$menu" == "2" ];then
+cfwarpreg
+else 
+exit
+fi
