@@ -35,7 +35,7 @@ archAffix(){
     esac
 }
 
-endpointyx(){
+warpendpoint(){
     # 下载优选工具软件，感谢某匿名网友的分享的优选工具
     wget https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warpendpoint
     
@@ -154,7 +154,7 @@ endpoint4(){
     echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
 
     # 启动优选程序
-    endpointyx
+    warpendpoint
 }
 
 endpoint6(){
@@ -192,7 +192,7 @@ endpoint6(){
     echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
 
     # 启动优选程序
-    endpointyx
+    warpendpoint
 }
 
 menu(){
