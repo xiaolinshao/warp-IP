@@ -204,7 +204,7 @@ menu(){
     echo ""
     echo -e "        1 ${GREEN}作者${PLAIN}: 武哥偷来的优选IP                       
     echo "
-    echo -e "       2 ${GREEN}博客${PLAIN}: 武哥没有                              
+    echo -e "        2 ${GREEN}博客${PLAIN}: 武哥没有                              
     echo "
     echo -e "        3 ${GREEN}GitHub 项目${PLAIN}: @github.com/xiaolinshao       
     echo ""
