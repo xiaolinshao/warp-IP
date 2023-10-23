@@ -35,9 +35,15 @@ archAffix(){
     esac
 }
 
-endpointyx(){
-    # 下载优选工具软件，感谢某匿名网友的分享的优选工具
-    wget https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp.exe
+cfwarpIP(){
+
+if [[ ! -f "warpendpoint" ]]; then
+echo "下载warp优选程序"
+if [[ -n $cpu ]]; then
+curl -L -o warpendpoint -# --retry 2 https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp.exe
+fi
+fi
+}
     
     # 启动 WARP Endpoint IP 优选工具
     chmod +x warp && ./warp >/dev/null 2>&1
