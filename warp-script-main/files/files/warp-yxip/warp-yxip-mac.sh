@@ -37,7 +37,7 @@ archAffix(){
 
 endpointyx(){
     # 下载优选工具软件，感谢某匿名网友的分享的优选工具
-    wget https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp
+    wget https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp.exe
     
     # 启动 WARP Endpoint IP 优选工具
     chmod +x warp && ./warp >/dev/null 2>&1
