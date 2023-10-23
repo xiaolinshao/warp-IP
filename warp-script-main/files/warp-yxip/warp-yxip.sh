@@ -46,9 +46,11 @@ endpointyx(){
     echo ""
     yellow "使用方法如下："
      echo ""
-    yellow "1. 将 WireGuard 节点的默认的 Endpoint IP：engage.cloudflareclient.com:2408
+    yellow "1. 将 WireGuard 节点的默认的
+    echo ""
+    Endpoint IP：engage.cloudflareclient.com:2408
      echo ""
-               替换成本地网络最优的 Endpoint IP"
+    替换成本地网络最优的 Endpoint IP"
 
     # 删除 WARP Endpoint IP 优选工具及其附属文件
     rm -f warp ip.txt
