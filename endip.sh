@@ -39,10 +39,10 @@ fi
 
 cfwarpIP(){
 
-if [[ ! -f "优选程序" ]]; then
+if [[ ! -f "warpendpoint" ]]; then
 echo "下载warp优选程序"
 if [[ -n $cpu ]]; then
-curl -L -o 优选程序 -# --retry 2 curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/blob/main/$cpu
+curl -L -o warpendpoint -# --retry 2 curl -sSL https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/blob/main/$cpu
 fi
 fi
 }
@@ -189,8 +189,8 @@ endipv6(){
 endipresult(){
 echo ${temp[@]} | sed -e 's/ /\n/g' | sort -u > ip.txt
 ulimit -n 102400
-chmod +x 优选程序
-./优选程序
+chmod +x warpendpoint
+./warpendpoint
 clear
 cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq | head -11 | awk -F, '{print "端点 "$1" 丢包率 "$2" 平均延迟 "$3}' 
 rm -rf ip.txt
