@@ -40,10 +40,15 @@ endpointyx(){
     
     # 显示前十个优选 Endpoint IP 及使用方法
     green "当前最优 Endpoint IP 结果如下，并已保存至 result.csv中："
+    echo " ------------------------------------------------------"
+    echo ""
     cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq | head -11 | awk -F, '{print "端点 "$1" 丢包率 "$2" 平均延迟 "$3}'
     echo ""
     yellow "使用方法如下："
-    yellow "1. 将 WireGuard 节点的默认的 Endpoint IP：engage.cloudflareclient.com:2408 替换成本地网络最优的 Endpoint IP"
+     echo ""
+    yellow "1. 将 WireGuard 节点的默认的 Endpoint IP：engage.cloudflareclient.com:2408
+     echo ""
+               替换成本地网络最优的 Endpoint IP"
 
     # 删除 WARP Endpoint IP 优选工具及其附属文件
     rm -f warp ip.txt
@@ -193,18 +198,28 @@ endpoint6(){
 
 menu(){
     clear
-    echo "#############################################################"
-    echo -e "#               ${RED}WARP Endpoint IP 一键优选脚本${PLAIN}               #"
-    echo -e "# ${GREEN}作者${PLAIN}: MisakaNo の 小破站                                  #"
-    echo -e "# ${GREEN}博客${PLAIN}: https://blog.misaka.rest                            #"
-    echo -e "# ${GREEN}GitHub 项目${PLAIN}: https://github.com/Misaka-blog               #"
-    echo -e "# ${GREEN}GitLab 项目${PLAIN}: https://gitlab.com/Misaka-blog               #"
-    echo -e "# ${GREEN}Telegram 频道${PLAIN}: https://t.me/misakanocchannel              #"
-    echo -e "# ${GREEN}Telegram 群组${PLAIN}: https://t.me/misakanoc                     #"
-    echo -e "# ${GREEN}YouTube 频道${PLAIN}: https://www.youtube.com/@misaka-blog        #"
-    echo "#############################################################"
+    echo  "         #############################################################"
+    echo ""
+    echo -e "       #       ${RED}WARP Endpoint IP 一键优选脚本${PLAIN}           #"
+    echo ""
+    echo -e "       # ${GREEN}作者${PLAIN}: 武哥偷来的优选IP                       #"
+    echo ""
+    echo -e "       # ${GREEN}博客${PLAIN}: 武哥没有                              #"
+    echo ""
+    echo -e "       # ${GREEN}GitHub 项目${PLAIN}: @github.com/xiaolinshao       #"
+    echo ""
+    echo -e "       # ${GREEN}GitLab 项目${PLAIN}: 武哥没有                       #"
+    echo ""
+    echo -e "       # ${GREEN}Telegram 频道${PLAIN}: https://t.me/broqun         #"
+    echo ""
+    echo -e "       # ${GREEN}Telegram 群组${PLAIN}: @joinchat/UvfrsjHJOrcA8jCG  #"
+    echo ""
+    echo -e "       # ${GREEN}YouTube 频道${PLAIN}: 武哥没有                      #"
+    echo ""
+    echo "          #############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} WARP IPv4 Endpoint IP 优选 ${YELLOW}(默认)${PLAIN}"
+     echo ""
     echo -e " ${GREEN}2.${PLAIN} WARP IPv6 Endpoint IP 优选"
     echo " -------------"
     echo -e " ${GREEN}0.${PLAIN} 退出脚本"
