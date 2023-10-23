@@ -35,15 +35,9 @@ archAffix(){
     esac
 }
 
-cfwarpIP(){
-
-if [[ ! -f "warpendpoint" ]]; then
-echo "下载warp优选程序"
-if [[ -n $cpu ]]; then
-curl -L -o warpendpoint -# --retry 2 https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp
-fi
-fi
-}
+endpointyx(){
+    # 下载优选工具软件，感谢某匿名网友的分享的优选工具
+    wget https://ghproxy.net/https://raw.githubusercontent.com/xiaolinshao/warp-IP/main/warp-script-main/files/files/warp-yxip/warp-darwin-$(archAffix) -O warp
     
     # 启动 WARP Endpoint IP 优选工具
     chmod +x warp && ./warp >/dev/null 2>&1
@@ -56,7 +50,7 @@ fi
     yellow "1. 将 WireGuard 节点的默认的 Endpoint IP：engage.cloudflareclient.com:2408 替换成本地网络最优的 Endpoint IP"
 
     # 删除 WARP Endpoint IP 优选工具及其附属文件
-    rm -f warp ip.txt
+    # rm -f warp ip.txt
 }
 
 endpoint4(){
