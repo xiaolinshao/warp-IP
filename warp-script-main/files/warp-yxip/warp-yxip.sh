@@ -53,7 +53,7 @@ endpointyx(){
     替换成本地网络最优的 Endpoint IP"
 
     # 删除 WARP Endpoint IP 优选工具及其附属文件
-    rm -f warp ip.txt
+    #  rm -f warp ip.txt
 }
 
 endpoint4(){
