@@ -197,12 +197,25 @@ rm -rf ip.txt
 exit
 }
 
-echo "------------------------------------------------------"
-echo "甬哥Github项目  ：github.com/yonggekkk"
-echo "甬哥blogger博客 ：ygkkk.blogspot.com"
-echo "甬哥YouTube频道 ：www.youtube.com/@ygkkk"
-echo "脚本支持WARP优选IP、WARP配置文件生成，感谢CF网友开发"
-echo "------------------------------------------------------"
+echo  "      #############################################################"
+echo ""
+echo -e "               ${RED}WARP Endpoint IP 一键优选脚本${PLAIN}           
+echo ""
+echo -e "        1 ${GREEN}作者${PLAIN}: 武哥偷来的优选IP                       
+echo "
+echo -e "        2 ${GREEN}博客${PLAIN}: 武哥没有                              
+echo "
+echo -e "        3 ${GREEN}GitHub 项目${PLAIN}: @github.com/xiaolinshao       
+echo ""
+echo -e "        4 ${GREEN}GitLab 项目${PLAIN}: 武哥没有                       
+echo ""
+echo -e "        5 ${GREEN}Telegram 频道${PLAIN}: https://t.me/broqun         
+echo ""
+echo -e "        6 ${GREEN}Telegram 群组${PLAIN}: @joinchat/UvfrsjHJOrcA8jCG  
+echo ""
+echo -e "        7 ${GREEN}YouTube 频道${PLAIN}: 武哥没有                      
+echo ""
+echo "      #############################################################"
 echo
 echo "1.WARP-V4V6优选对端IP"
 echo "2.注册生成WARP-Wireguard配置文件、二维码"
