@@ -2316,16 +2316,25 @@ show_info() {
 
 menu() {
     clear
-    echo "#############################################################"
-    echo -e "#                ${RED}CloudFlare WARP 一键管理脚本${PLAIN}               #"
-    echo -e "# ${GREEN}作者${PLAIN}: MisakaNo の 小破站                                  #"
-    echo -e "# ${GREEN}博客${PLAIN}: https://blog.misaka.rest                            #"
-    echo -e "# ${GREEN}GitHub 项目${PLAIN}: https://github.com/Misaka-blog               #"
-    echo -e "# ${GREEN}GitLab 项目${PLAIN}: https://gitlab.com/Misaka-blog               #"
-    echo -e "# ${GREEN}Telegram 频道${PLAIN}: https://t.me/misakanocchannel              #"
-    echo -e "# ${GREEN}Telegram 群组${PLAIN}: https://t.me/misakanoc                     #"
-    echo -e "# ${GREEN}YouTube 频道${PLAIN}: https://www.youtube.com/@misaka-blog        #"
-    echo "#############################################################"
+    echo  "      #############################################################"
+    echo ""
+    echo -e "               ${RED}WARP Endpoint IP 一键优选脚本${PLAIN}           
+    echo ""
+    echo -e "        1 ${GREEN}作者${PLAIN}: 武哥偷来的优选IP                       
+    echo "
+    echo -e "        2 ${GREEN}博客${PLAIN}: 武哥没有                              
+    echo "
+    echo -e "        3 ${GREEN}GitHub 项目${PLAIN}: @github.com/xiaolinshao       
+    echo ""
+    echo -e "        4 ${GREEN}GitLab 项目${PLAIN}: 武哥没有                       
+    echo ""
+    echo -e "        5 ${GREEN}Telegram 频道${PLAIN}: https://t.me/broqun         
+    echo ""
+    echo -e "        6 ${GREEN}Telegram 群组${PLAIN}: @joinchat/UvfrsjHJOrcA8jCG  
+    echo ""
+    echo -e "        7 ${GREEN}YouTube 频道${PLAIN}: 武哥没有                      
+    echo ""
+    echo "      #############################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} 安装 / 切换 WGCF-WARP          | ${GREEN}3.${PLAIN} 安装 / 切换 WARP-GO"
     echo -e " ${GREEN}2.${PLAIN} ${RED}卸载 WGCF-WARP${PLAIN}                 | ${GREEN}4.${PLAIN} ${RED}卸载 WARP-GO${PLAIN}"
